@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color:grey;
+    }
+    .form-container {
+      max-width: 600px;
+      background:rgb(243, 229, 229);
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(238, 233, 233, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color:rgb(57, 161, 161);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-row {
+      display: flex;
+      gap: 18px;
+    }
+    .form-row > div {
+      flex: 1;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color:#000000;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-inline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .form-inline label {
+      margin-right: 10px;
+    }
+    button {
+      width: 100%;
+      background: #449647;
+      color: white;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      border-radius: 1500px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #405f40;
+    }
+    nav{
+        background-color: rgb(200, 223, 223);
+       border:10px;
+       border-radius:100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <nav>
+    <h2>Create Account</h2>
+    </nav>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Enter Your First Name " required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName"  placeholder="Enter Your Last Name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter Your password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter Your Password Again" required>
+        </div>
+      </div>
+
+      <div class="form-group form-inline">
+        <label>Gender:</label>
+        <id><input type="radio" name="gender" value="male"> Male</id>
+        <id><input type="radio" name="gender" value="female"> Female</id>
+        <id><input type="radio" name="gender" value="other"> Other</id>
+      </div>
+
+      <div class="form-group form-inline">
+        <label>Hobbies:</label>
+        <id><input type="checkbox" name="hobbies" value="reading"> Reading</id>
+        <id><input type="checkbox" name="hobbies" value="sports"> Sports</id>
+        <id><input type="checkbox" name="hobbies" value="music"> Music</id>
+      </div>
+
+      <div class="form-group">
+        <label for="incomeSource">Source of Income</label>
+        <select id="incomeSource" name="incomeSource">
+          <option value="employed">Employed</option>
+          <option value="unemployed">Unemployed</option>
+          <option value="self-employed">Self-Employed</option>
+          <option value="student">Student</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="incomeRange">Income Range: <span id="incomeValue">20000</span></label>
+        <input type="range" id="incomeRange" name="incomeRange" min="0" max="100000" value="20000" step="1000" oninput="document.getElementById('incomeValue').textContent = this.value">
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="0" value="18">
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+      </div>
+      <button type="submit">Create</button>
+    </form>
+  </div>
+</body>
+</html>
