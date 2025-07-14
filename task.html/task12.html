@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animated Text</title>
+  <style>
+    .animated-text {
+      opacity: 0;
+      transform: translateX(-100px);
+      animation: slideFadeBounce 2.5s ease-out forwards;
+      font-size: 2em;
+      font-weight: bold;
+      margin: 100px;
+      color: rgb(68, 63, 56);
+    }
+
+    @keyframes slideFadeBounce {
+      0% {
+        opacity:0;
+        transform: translateX(-100px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateX(20px);
+      }
+      80% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animated-text">Welcome to the Page!</div>
+
+</body>
+</html>
