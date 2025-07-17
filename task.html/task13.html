@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            padding-top: 50px;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #ans {
+            font-size: 20px;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>SIMPLE Calculator<h2>
+    <input id="num1" type="number" placeholder="Enter the number"><br><br>
+    <input id="num2" type="number" placeholder="Enter the number"><br><br>
+    
+    <button onclick="divi35()">Divisible by 3 & 5</button>
+    <button onclick="big()">Find Big Number</button>
+    <button onclick="add()">Add</button>
+    <button onclick="sub()">Subtract</button>
+    <button onclick="mul()">Multiply</button>
+    <button onclick="div()">Divide</button>
+    
+    <h1>Answer:</h1>
+    <p id="ans"></p>
+
+    <script>
+        function divi35() {
+            let val1 = Number(document.getElementById("num1").value);
+            if (val1 % 3 === 0 && val1 % 5 === 0) {
+                document.getElementById("ans").innerHTML = "Yes, divisible by 3 & 5";
+            } else {
+                document.getElementById("ans").innerHTML = "Not divisible by 3 & 5";
+            }
+        }
+
+        function big() {
+            let val1 = Number(document.getElementById("num1").value);
+            let val2 = Number(document.getElementById("num2").value);
+            if (val1 > val2) {
+                document.getElementById("ans").innerHTML = `${val1} is the bigger number`;
+            } else if (val2 > val1) {
+                document.getElementById("ans").innerHTML = `${val2} is the bigger number`;
+            } else {
+                document.getElementById("ans").innerHTML = "Both numbers are equal";
+            }
+        }
+
+        function add() {
+            let val1 = Number(document.getElementById("num1").value);
+            let val2 = Number(document.getElementById("num2").value);
+            document.getElementById("ans").innerHTML = `Sum: ${val1 + val2}`;
+        }
+
+        function sub() {
+            let val1 = Number(document.getElementById("num1").value);
+            let val2 = Number(document.getElementById("num2").value);
+            document.getElementById("ans").innerHTML = `Difference: ${val1 - val2}`;
+        }
+
+        function mul() {
+            let val1 = Number(document.getElementById("num1").value);
+            let val2 = Number(document.getElementById("num2").value);
+            document.getElementById("ans").innerHTML = `Product: ${val1 * val2}`;
+        }
+
+        function div() {
+            let val1 = Number(document.getElementById("num1").value);
+            let val2 = Number(document.getElementById("num2").value);
+            if (val2 === 0) {
+                document.getElementById("ans").innerHTML = "Error: Cannot divide by zero!";
+            } else {
+                document.getElementById("ans").innerHTML = `Quotient: ${val1 / val2}`;
+            }
+        }
+    </script>
+</body>
+</html>

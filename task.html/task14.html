@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Number Generator</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      body {
+         text-align: center;
+         margin-top: 30px;
+         font-family: Arial, sans-serif;
+      }
+      select, button {
+         padding: 8px 12px;
+         font-size: 16px;
+         margin: 10px 5px;
+      }
+      #type {
+         margin-top: 20px;
+         font-weight: bold;
+         font-size: 18px;
+      }
+      table {
+         margin: 20px auto 10px;
+         border-collapse: collapse;
+         width: 300px;
+      }
+      th, td {
+         border: 1px solid #333;
+         padding: 8px;
+         font-size: 16px;
+      }
+      th {
+         background-color: #f2f2f2;
+      }
+      #generateBtn {
+         margin-top: 20px;
+         display: none;
+      }
+      .table-wrapper {
+         display: inline-block;
+         text-align: center;
+         width: 300px;
+         margin-top: 10px;
+      }
+      .button-right {
+         text-align: right;
+         margin-top: 10px;
+      }
+   </style>
+</head>
+<body>
+
+   <h2>Number Generator</h2><br>
+
+   <label for="order">Order:</label>
+   <select id="order" onchange="checkSelections()">
+      <option value="null">--select--</option>
+      <option value="asc">1 to 10</option>
+      <option value="desc">10 to 1</option>
+   </select>
+
+   <label for="loop">Loop Type:</label>
+   <select id="loop" onchange="checkSelections()">
+      <option value="null">--select--</option>
+      <option value="for">for</option>
+      <option value="while">while</option>
+      <option value="do-while">do...while</option>
+   </select>
+
+   <br>
+   <button id="generateBtn" onclick="generate()">Generate</button>
+
+   <p id="type"></p>
+   <div id="num" class="table-wrapper"></div>
+
+   <script>
+      function checkSelections() {
+         const order = document.getElementById("order").value;
+         const loopType = document.getElementById("loop").value;
+         const generateBtn = document.getElementById("generateBtn");
+
+         generateBtn.style.display = (order !== "null" && loopType !== "null") 
+            ? "inline-block" : "none";
+      }
+
+      function generate() {
+         const order = document.getElementById("order").value;
+         const loopType = document.getElementById("loop").value;
+
+         let ty = "";
+         let table = "<table><tr><th>Number</th><th>Type</th></tr>";
+
+         function getType(n) {
+            if (n % 5 === 0) return "Divisible by 5";
+            else if (n % 2 === 0) return "Even number";
+            else return "Odd number";
+         }
+
+         if (loopType === "for") {
+            ty = "FOR LOOP";
+            if (order === "asc") {
+               for (let i = 1; i <= 10; i++) {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+               }
+            } else {
+               for (let i = 10; i >= 1; i--) {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+               }
+            }
+         } else if (loopType === "while") {
+            ty = "WHILE LOOP";
+            if (order === "asc") {
+               let i = 1;
+               while (i <= 10) {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+                  i++;
+               }
+            } else {
+               let i = 10;
+               while (i >= 1) {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+                  i--;
+               }
+            }
+         } else if (loopType === "do-while") {
+            ty = "DO-WHILE LOOP";
+            if (order === "asc") {
+               let i = 1;
+               do {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+                  i++;
+               } while (i <= 10);
+            } else {
+               let i = 10;
+               do {
+                  table += `<tr><td>${i}</td><td>${getType(i)}</td></tr>`;
+                  i--;
+               } while (i >= 1);
+            }
+         }
+
+         table += "</table>";
+
+         document.getElementById("type").innerHTML = `Using: ${ty}`;
+         document.getElementById("num").innerHTML = `
+            ${table}
+            <div class="button-right">
+               <button id="clearBtn" onclick="clearAll()" style="display:inline-block;">Clear</button>
+            </div>
+         `;
+      }
+
+      function clearAll() {
+         document.getElementById("order").value = "null";
+         document.getElementById("loop").value = "null";
+         document.getElementById("generateBtn").style.display = "none";
+         document.getElementById("type").innerHTML = "";
+         document.getElementById("num").innerHTML = "";
+      }
+   </script>
+
+</body>
+</html>
+
